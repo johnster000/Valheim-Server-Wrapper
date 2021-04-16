@@ -26,3 +26,4 @@ Features include:
 
 -No accidental input to the console (which was the main reason why I created this wrapper)
 
+CONTRIBUTIONS ARE WELCOME!
