@@ -10,6 +10,8 @@ Feel free to play around with it, this is my first public repo!
 
 Features include: 
 
+-Filter out all the Debug crap from the server console
+
 -Backup world files on every world save
 
 -Auto start the server when program is opened
