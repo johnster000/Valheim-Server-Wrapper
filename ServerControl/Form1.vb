@@ -269,17 +269,18 @@ Public Class Form1
 
                     For Each user As String In My.Settings.Users
                         Dim split As String() = user.Split(",")
-
-                        If split(1) = steamid Then
-
-                            username = split(0)
-                            Dim newstring As String = username & "," & steamid & "," & split(2) & "," & timed
-                            My.Settings.Users.Remove(user)
-                            My.Settings.Users.Add(newstring)
-                            My.Settings.Save()
-                            founduser = True
-                            Exit For
-                        End If
+                        Try
+                            If split(1) = steamid Then
+                                username = split(0)
+                                Dim newstring As String = username & "," & steamid & "," & split(2) & "," & timed
+                                My.Settings.Users.Remove(user)
+                                My.Settings.Users.Add(newstring)
+                                My.Settings.Save()
+                                founduser = True
+                                Exit For
+                            End If
+                        Catch
+                        End Try
                     Next
                     If founduser = True Then
                         Dim newlstvitem As New ListViewItem
