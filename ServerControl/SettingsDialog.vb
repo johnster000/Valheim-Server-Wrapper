@@ -12,6 +12,7 @@ Public Class SettingsDialog
         My.Settings.Item("Backup") = CBBackups.Checked
         My.Settings.Item("BackupPath") = TBBackup.Text
         My.Settings.Item("Autostart") = CBAutostart.Checked
+        My.Settings.Item("CrossPlay") = CBCrossplay.Checked
 
         My.Settings.Save()
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
@@ -42,6 +43,7 @@ Public Class SettingsDialog
 
         CBBackups.Checked = My.Settings.Backup
         CBAutostart.Checked = My.Settings.Autostart
+        CBCrossplay.Checked = My.Settings.CrossPlay
 
         TBServerName.Text = My.Settings.ServerName
         TBServerName.Text = My.Settings.ServerName

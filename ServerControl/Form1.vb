@@ -41,9 +41,15 @@ Public Class Form1
                     psi = New ProcessStartInfo(My.Settings.ServerScript)
                     BTNServer.Text = "Starting..."
                     BTNServer.Enabled = False
+                    Dim crossplay As String = String.Empty
+                    If My.Settings.CrossPlay Then
+                        crossplay = " -crossplay"
+                    End If
+                    Dim arguments As String = "valheim_server -nographics -batchmode -name """ & My.Settings.ServerName & """ -port " & My.Settings.Port & " -world """ & My.Settings.WorldName & """ -password """ & My.Settings.Password & """" & crossplay
+                    'MessageBox.Show(Me, arguments)
                     Dim systemencoding As System.Text.Encoding = System.Text.Encoding.GetEncoding(Globalization.CultureInfo.CurrentUICulture.TextInfo.OEMCodePage)
                     With psi
-                        .Arguments = "valheim_server -nographics -batchmode -name """ & My.Settings.ServerName & """ -port " & My.Settings.Port & " -world """ & My.Settings.WorldName & """ -password """ & My.Settings.Password & """"
+                        .Arguments = arguments
                         .UseShellExecute = False  ' Required for redirection
                         .RedirectStandardError = True
                         .RedirectStandardOutput = True
@@ -122,76 +128,76 @@ Public Class Form1
             End Try
 
             Select Case True
-                Case text.Contains("Closing socket")
-                    Dim username As String = String.Empty
-                    Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
-                    Dim steamid As String = text.Substring(38, text.Length - 38)
-                    For Each user As String In My.Settings.Users
-                        If user.Contains(steamid) Then
-                            Dim split As String() = user.Split(",")
-                            username = split(0)
-                            Dim newstring As String = split(0) & "," & split(1) & "," & split(2) & "," & timed
-                            My.Settings.Users.Remove(user)
-                            My.Settings.Users.Add(newstring)
-                            My.Settings.Save()
-                            Exit For
-                        End If
-                    Next
+                'Case text.Contains("Closing socket")
+                '    Dim username As String = String.Empty
+                '    Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
+                '    Dim steamid As String = text.Substring(38, text.Length - 38)
+                '    For Each user As String In My.Settings.Users
+                '        If user.Contains(steamid) Then
+                '            Dim split As String() = user.Split(",")
+                '            username = split(0)
+                '            Dim newstring As String = split(0) & "," & split(1) & "," & split(2) & "," & timed
+                '            My.Settings.Users.Remove(user)
+                '            My.Settings.Users.Add(newstring)
+                '            My.Settings.Save()
+                '            Exit For
+                '        End If
+                '    Next
 
-                    Dim newlstvitem As New ListViewItem
-                    With newlstvitem
-                        .Text = "OUT"
-                        .SubItems.Add(username)
-                        .SubItems.Add(timed)
-                    End With
-                    LSTVUserEvents.Items.Insert(0, newlstvitem)
-                    For Each hdr As ColumnHeader In LSTVUserEvents.Columns
-                        hdr.Width = -2
-                    Next
-                    For Each item As ListViewItem In LSTVUsersOnline.Items
-                        If item.Text = username Then
-                            item.Remove()
-                        End If
-                    Next
-                    For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
-                        hdr.Width = -2
-                    Next
-                Case text.Contains("Got handshake from client")
-                    Dim founduser As Boolean = False
-                    Dim username As String = String.Empty
-                    Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
-                    Dim steamid As String = text.Substring(47, text.Length - 47)
-                    For Each user As String In My.Settings.Users
-                        If user.Contains(steamid) Then
-                            Dim split As String() = user.Split(",")
-                            username = split(0)
-                            Dim newstring As String = split(0) & "," & split(1) & "," & timed & "," & split(3)
-                            My.Settings.Users.Remove(user)
-                            My.Settings.Users.Add(newstring)
-                            My.Settings.Save()
-                            founduser = True
-                            Exit For
-                        End If
-                    Next
-                    If founduser = False Then username = add_unknown_user(steamid, timed)
-                    Dim newlstvitem As New ListViewItem
-                    With newlstvitem
-                        .Text = "IN"
-                        .SubItems.Add(username)
-                        .SubItems.Add(timed)
-                    End With
-                    LSTVUserEvents.Items.Insert(0, newlstvitem)
+                '    Dim newlstvitem As New ListViewItem
+                '    With newlstvitem
+                '        .Text = "OUT"
+                '        .SubItems.Add(username)
+                '        .SubItems.Add(timed)
+                '    End With
+                '    LSTVUserEvents.Items.Insert(0, newlstvitem)
+                '    For Each hdr As ColumnHeader In LSTVUserEvents.Columns
+                '        hdr.Width = -2
+                '    Next
+                '    For Each item As ListViewItem In LSTVUsersOnline.Items
+                '        If item.Text = username Then
+                '            item.Remove()
+                '        End If
+                '    Next
+                '    For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
+                '        hdr.Width = -2
+                '    Next
+                'Case text.Contains("Got handshake from client")
+                '    Dim founduser As Boolean = False
+                '    Dim username As String = String.Empty
+                '    Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
+                '    Dim steamid As String = text.Substring(47, text.Length - 47)
+                '    For Each user As String In My.Settings.Users
+                '        If user.Contains(steamid) Then
+                '            Dim split As String() = user.Split(",")
+                '            username = split(0)
+                '            Dim newstring As String = split(0) & "," & split(1) & "," & timed & "," & split(3)
+                '            My.Settings.Users.Remove(user)
+                '            My.Settings.Users.Add(newstring)
+                '            My.Settings.Save()
+                '            founduser = True
+                '            Exit For
+                '        End If
+                '    Next
+                '    If founduser = False Then username = add_unknown_user(steamid, timed)
+                '    Dim newlstvitem As New ListViewItem
+                '    With newlstvitem
+                '        .Text = "IN"
+                '        .SubItems.Add(username)
+                '        .SubItems.Add(timed)
+                '    End With
+                '    LSTVUserEvents.Items.Insert(0, newlstvitem)
 
-                    For Each hdr As ColumnHeader In LSTVUserEvents.Columns
-                        hdr.Width = -2
-                    Next
-                    With LSTVUsersOnline.Items.Add(username)
-                        .SubItems.Add("00:00")
-                        .Tag = linetime
-                    End With
-                    For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
-                        hdr.Width = -2
-                    Next
+                '    For Each hdr As ColumnHeader In LSTVUserEvents.Columns
+                '        hdr.Width = -2
+                '    Next
+                '    With LSTVUsersOnline.Items.Add(username)
+                '        .SubItems.Add("00:00")
+                '        .Tag = linetime
+                '    End With
+                '    For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
+                '        hdr.Width = -2
+                '    Next
                 Case text.Contains("World saved")
                     My.Settings.Item("WorldSaved") = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
                     My.Settings.Save()
@@ -213,6 +219,89 @@ Public Class Form1
                     End Try
 
                     LBLWorldSaved.Text = "World Saved: " & linetime.ToString("yyyy/MM/dd hh:mm:ss tt") & " (" & Converttotime(DateDiff(DateInterval.Minute, CDate(My.Settings.WorldSaved), Now)) & ")"
+                Case text.Contains("Got character ZDOID from ")
+                    Dim founduser As Boolean = False
+                    Dim userline As String = text.Substring(46, text.Length - 46)
+                    Dim splituser As String() = userline.Split(" : ")
+                    '#Zog : -3847329843:1
+                    Dim username As String = splituser(0)
+                    Dim steamid As String = splituser(2)
+                    Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
+
+
+                    For Each user As String In My.Settings.Users
+                        Dim split As String() = user.Split(",")
+                        If split(0) = username Then
+                            Dim newstring As String = username & "," & steamid & "," & timed & "," & split(3)
+                            My.Settings.Users.Remove(user)
+                            My.Settings.Users.Add(newstring)
+                            My.Settings.Save()
+                            founduser = True
+                            Exit For
+                        End If
+                    Next
+                    If founduser = False Then add_unknown_user(steamid, timed, username)
+                    Dim newlstvitem As New ListViewItem
+                    With newlstvitem
+                        .Text = "IN"
+                        .SubItems.Add(username)
+                        .SubItems.Add(timed)
+                    End With
+                    LSTVUserEvents.Items.Insert(0, newlstvitem)
+
+                    For Each hdr As ColumnHeader In LSTVUserEvents.Columns
+                        hdr.Width = -2
+                    Next
+                    With LSTVUsersOnline.Items.Add(username)
+                        .SubItems.Add("00:00")
+                        .Tag = linetime
+                    End With
+                    For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
+                        hdr.Width = -2
+                    Next
+                Case text.Contains("Destroying abandoned non persistent zdo ")
+                    Dim founduser As Boolean = False
+                    Dim userline As String = text.Substring(61, text.Length - 61)
+                    Dim splituser As String() = userline.Split(" owner ")
+                    Dim username As String = String.Empty
+                    Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
+                    Dim steamid As String = splituser(0)
+
+                    For Each user As String In My.Settings.Users
+                        Dim split As String() = user.Split(",")
+
+                        If split(1) = steamid Then
+
+                            username = split(0)
+                            Dim newstring As String = username & "," & steamid & "," & split(2) & "," & timed
+                            My.Settings.Users.Remove(user)
+                            My.Settings.Users.Add(newstring)
+                            My.Settings.Save()
+                            founduser = True
+                            Exit For
+                        End If
+                    Next
+                    If founduser = True Then
+                        Dim newlstvitem As New ListViewItem
+                        With newlstvitem
+                            .Text = "OUT"
+                            .SubItems.Add(username)
+                            .SubItems.Add(timed)
+                        End With
+                        LSTVUserEvents.Items.Insert(0, newlstvitem)
+                        For Each hdr As ColumnHeader In LSTVUserEvents.Columns
+                            hdr.Width = -2
+                        Next
+                        For Each item As ListViewItem In LSTVUsersOnline.Items
+                            If item.Text = username Then
+                                item.Remove()
+                            End If
+                        Next
+                        For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
+                            hdr.Width = -2
+                        Next
+                    End If
+
             End Select
 
 
@@ -247,31 +336,30 @@ skipline:
 
     End Sub
 
-    Function add_unknown_user(ByVal steamid As String, ByVal timein As String) As String
-        Dim newusername As String = "Unknown"
-        Dim count As Integer = 1
+    Function add_unknown_user(ByVal steamid As String, ByVal timein As String, ByVal newusername As String) As String
+        '        Dim count As Integer = 1
 
-Try_again:
-        Dim countedusername As String = newusername & count
-        Dim userexists As Boolean = False
+        'Try_again:
+        '        Dim countedusername As String = newusername & count
+        '        Dim userexists As Boolean = False
 
-        For Each user As String In My.Settings.Users
-            Dim split As String() = user.Split(",")
-            If countedusername = split(0) Then
-                userexists = True
-                Exit For
-            End If
-        Next
-        If userexists Then
-            count += 1
-            GoTo Try_again
-        End If
+        '        For Each user As String In My.Settings.Users
+        '            Dim split As String() = user.Split(",")
+        '            If countedusername = split(0) Then
+        '                userexists = True
+        '                Exit For
+        '            End If
+        '        Next
+        '        If userexists Then
+        '            count += 1
+        '            GoTo Try_again
+        '        End If
 
-        Dim newstring As String = countedusername & "," & steamid & "," & timein & ","
+        Dim newstring As String = newusername & "," & steamid & "," & timein & ","
         My.Settings.Users.Add(newstring)
         My.Settings.Save()
 
-        Return countedusername
+        Return newusername
     End Function
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
