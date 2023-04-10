@@ -252,10 +252,19 @@ Public Class Form1
                     For Each hdr As ColumnHeader In LSTVUserEvents.Columns
                         hdr.Width = -2
                     Next
-                    With LSTVUsersOnline.Items.Add(username)
-                        .SubItems.Add("00:00")
-                        .Tag = linetime
-                    End With
+
+                    Dim login_exists As Boolean = False
+                    For Each item As ListViewItem In LSTVUsersOnline.Items
+                        If item.Text = username Then login_exists = True : Exit For
+                    Next
+
+                    If login_exists = False Then
+                        With LSTVUsersOnline.Items.Add(username)
+                            .SubItems.Add("00:00")
+                            .Tag = linetime
+                        End With
+                    End If
+
                     For Each hdr As ColumnHeader In LSTVUsersOnline.Columns
                         hdr.Width = -2
                     Next
