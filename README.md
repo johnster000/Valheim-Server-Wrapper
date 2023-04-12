@@ -22,8 +22,6 @@ Features include:
 
 -See history of last session in the settings dialog of each user
 
--New users who arent defined will be added as "Unknown(N)", simply edit the user in the settings dialog to identify them
-
 -Clean shutdown of server when application is closed or the "Stop Server" button is pressed
 
 -No accidental input to the console (which was the main reason why I created this wrapper)
