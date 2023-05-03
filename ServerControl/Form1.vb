@@ -1,5 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.IO
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
+
 Public Class Form1
 
     Private psi As ProcessStartInfo
@@ -222,10 +224,10 @@ Public Class Form1
                 Case text.Contains("Got character ZDOID from ")
                     Dim founduser As Boolean = False
                     Dim userline As String = text.Substring(46, text.Length - 46)
-                    Dim splituser As String() = userline.Split(" : ")
+                    Dim splituser As String() = userline.Split(":")
                     '#Zog : -3847329843:1
-                    Dim username As String = splituser(0)
-                    Dim steamid As String = splituser(2)
+                    Dim username As String = splituser(0).Substring(0, splituser(0).Length - 1)
+                    Dim steamid As String = splituser(1).Replace(" ", "") & ":" & splituser(2)
                     Dim timed As String = linetime.ToString("yyyy/MM/dd hh:mm:ss tt")
 
 
@@ -452,4 +454,5 @@ skipline:
                 e.Cancel = True
         End Select
     End Sub
+
 End Class

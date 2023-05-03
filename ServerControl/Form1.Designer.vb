@@ -53,28 +53,31 @@ Partial Class Form1
         'TBOutput
         '
         Me.TBOutput.BackColor = System.Drawing.SystemColors.Window
-        Me.TBOutput.Location = New System.Drawing.Point(12, 41)
+        Me.TBOutput.Location = New System.Drawing.Point(16, 50)
+        Me.TBOutput.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TBOutput.Multiline = True
         Me.TBOutput.Name = "TBOutput"
         Me.TBOutput.ReadOnly = True
         Me.TBOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TBOutput.Size = New System.Drawing.Size(651, 204)
+        Me.TBOutput.Size = New System.Drawing.Size(867, 250)
         Me.TBOutput.TabIndex = 0
         '
         'BTNServer
         '
-        Me.BTNServer.Location = New System.Drawing.Point(12, 12)
+        Me.BTNServer.Location = New System.Drawing.Point(16, 15)
+        Me.BTNServer.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BTNServer.Name = "BTNServer"
-        Me.BTNServer.Size = New System.Drawing.Size(125, 23)
+        Me.BTNServer.Size = New System.Drawing.Size(167, 28)
         Me.BTNServer.TabIndex = 1
         Me.BTNServer.Text = "Start Server"
         Me.BTNServer.UseVisualStyleBackColor = True
         '
         'BTNSettings
         '
-        Me.BTNSettings.Location = New System.Drawing.Point(588, 12)
+        Me.BTNSettings.Location = New System.Drawing.Point(784, 15)
+        Me.BTNSettings.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BTNSettings.Name = "BTNSettings"
-        Me.BTNSettings.Size = New System.Drawing.Size(75, 23)
+        Me.BTNSettings.Size = New System.Drawing.Size(100, 28)
         Me.BTNSettings.TabIndex = 2
         Me.BTNSettings.Text = "Settings"
         Me.BTNSettings.UseVisualStyleBackColor = True
@@ -82,17 +85,20 @@ Partial Class Form1
         'Panel1
         '
         Me.Panel1.Enabled = False
-        Me.Panel1.Location = New System.Drawing.Point(143, 12)
+        Me.Panel1.Location = New System.Drawing.Point(191, 15)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(124, 23)
+        Me.Panel1.Size = New System.Drawing.Size(165, 28)
         Me.Panel1.TabIndex = 4
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.LSTVUserEvents)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 251)
+        Me.GroupBox1.Location = New System.Drawing.Point(16, 309)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(338, 185)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(451, 228)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "User Events"
@@ -103,10 +109,12 @@ Partial Class Form1
         Me.LSTVUserEvents.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LSTVUserEvents.FullRowSelect = True
         Me.LSTVUserEvents.GridLines = True
-        Me.LSTVUserEvents.Location = New System.Drawing.Point(3, 16)
+        Me.LSTVUserEvents.HideSelection = False
+        Me.LSTVUserEvents.Location = New System.Drawing.Point(4, 19)
+        Me.LSTVUserEvents.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LSTVUserEvents.MultiSelect = False
         Me.LSTVUserEvents.Name = "LSTVUserEvents"
-        Me.LSTVUserEvents.Size = New System.Drawing.Size(332, 166)
+        Me.LSTVUserEvents.Size = New System.Drawing.Size(443, 205)
         Me.LSTVUserEvents.TabIndex = 4
         Me.LSTVUserEvents.UseCompatibleStateImageBehavior = False
         Me.LSTVUserEvents.View = System.Windows.Forms.View.Details
@@ -129,9 +137,11 @@ Partial Class Form1
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.LSTVUsersOnline)
-        Me.GroupBox2.Location = New System.Drawing.Point(356, 251)
+        Me.GroupBox2.Location = New System.Drawing.Point(475, 309)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(307, 185)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(409, 228)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Logged in users"
@@ -143,10 +153,12 @@ Partial Class Form1
         Me.LSTVUsersOnline.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LSTVUsersOnline.FullRowSelect = True
         Me.LSTVUsersOnline.GridLines = True
-        Me.LSTVUsersOnline.Location = New System.Drawing.Point(3, 16)
+        Me.LSTVUsersOnline.HideSelection = False
+        Me.LSTVUsersOnline.Location = New System.Drawing.Point(4, 19)
+        Me.LSTVUsersOnline.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.LSTVUsersOnline.MultiSelect = False
         Me.LSTVUsersOnline.Name = "LSTVUsersOnline"
-        Me.LSTVUsersOnline.Size = New System.Drawing.Size(301, 166)
+        Me.LSTVUsersOnline.Size = New System.Drawing.Size(401, 205)
         Me.LSTVUsersOnline.TabIndex = 5
         Me.LSTVUsersOnline.UseCompatibleStateImageBehavior = False
         Me.LSTVUsersOnline.View = System.Windows.Forms.View.Details
@@ -163,14 +175,15 @@ Partial Class Form1
         '
         'ContextMenuStrip1
         '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 26)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(133, 28)
         '
         'RemoveToolStripMenuItem
         '
         Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(132, 24)
         Me.RemoveToolStripMenuItem.Text = "Remove"
         '
         'Timer1
@@ -179,29 +192,31 @@ Partial Class Form1
         '
         'StatusStrip1
         '
+        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LBLWorldSaved, Me.LBLBackup, Me.LBLServerUp})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 439)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 532)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(675, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(897, 26)
         Me.StatusStrip1.TabIndex = 8
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'LBLWorldSaved
         '
         Me.LBLWorldSaved.Name = "LBLWorldSaved"
-        Me.LBLWorldSaved.Size = New System.Drawing.Size(76, 17)
+        Me.LBLWorldSaved.Size = New System.Drawing.Size(96, 20)
         Me.LBLWorldSaved.Text = "World Saved:"
         '
         'LBLBackup
         '
         Me.LBLBackup.Name = "LBLBackup"
-        Me.LBLBackup.Size = New System.Drawing.Size(66, 17)
+        Me.LBLBackup.Size = New System.Drawing.Size(83, 20)
         Me.LBLBackup.Text = "Backed Up:"
         '
         'LBLServerUp
         '
         Me.LBLServerUp.Name = "LBLServerUp"
-        Me.LBLServerUp.Size = New System.Drawing.Size(518, 17)
+        Me.LBLServerUp.Size = New System.Drawing.Size(698, 20)
         Me.LBLServerUp.Spring = True
         Me.LBLServerUp.Text = "Server Uptime:"
         Me.LBLServerUp.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -209,9 +224,9 @@ Partial Class Form1
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(675, 461)
+        Me.ClientSize = New System.Drawing.Size(897, 558)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -221,8 +236,9 @@ Partial Class Form1
         Me.Controls.Add(Me.TBOutput)
         Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(691, 500)
-        Me.MinimumSize = New System.Drawing.Size(691, 500)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MaximumSize = New System.Drawing.Size(915, 605)
+        Me.MinimumSize = New System.Drawing.Size(915, 605)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ServerControl"
